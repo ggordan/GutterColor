@@ -32,8 +32,6 @@ class Line:
         return "%s%s" % (color[1:], color[1:])
       else:
         return "%s" % color[1:]
-    else:
-      return False
 
 
   # Returns the absolute path to the icons
@@ -49,16 +47,15 @@ class Line:
   def add_region(self):
     self.create_icon()
     self.view.add_regions(
-      "gutter_color_%s" % [self.line_number],
+      "gutter_color_%s" % self.line_number,
       [self.region],
       "gutter_color",
       self.relative_icon_path(),
-      HIDDEN | PERSISTENT
+      HIDDEN
     )
 
 
   def erase_region(self):
-    print(self.view.get_regions("gutter_color_%s" % self.line_number))
     self.view.erase_regions("gutter_color_%s" % self.line_number)
 
   # Create the color icon using ImageMagick convert
