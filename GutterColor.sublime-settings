@@ -1,0 +1,18 @@
+
+/*
+    GutterColor Default Settings
+*/
+
+{
+
+  /*
+   * The location of the ImageMagic convert script.
+   */
+  "convert_path" : "/usr/bin/convert",
+
+  /*
+   * The syntax for which to run GutterColor.
+   */
+  "supported_syntax": ["css", "scss", "sass", "less"]
+
+}

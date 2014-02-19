@@ -1,7 +1,7 @@
 from os.path import join, dirname, realpath, isfile
 from os import system, remove
 import GutterColor.settings as settings
-from sublime import HIDDEN, PERSISTENT
+from sublime import HIDDEN, PERSISTENT, load_settings
 import re
 
 class Line:
@@ -11,6 +11,8 @@ class Line:
     self.region   = region
     self.file_id  = file_id
     self.line_number = line_number
+    self.settings = load_settings("GutterColor.sublime-settings")
+
 
 
   def has_color(self):
@@ -58,8 +60,10 @@ class Line:
 
   def create_icon(self):
     """Create the color icon using ImageMagick convert"""
-    script = "convert -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA -size 16x16 -alpha transparent xc: -fill '#%s' -draw 'circle 7,7 8,10' png32:\"%s\"" % (self.color(), self.icon_path())
-    if not isfile(self.icon_path()): system(script)
+
+    script = "%s -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA -size 16x16 -alpha transparent xc: -fill '#%s' -draw 'circle 7,7 8,10' png32:\"%s\"" % (self.settings.get("convert_path"), self.color(), self.icon_path())
+    if not isfile(self.icon_path()):
+      system(script)
 
 
   def formatted_line(self):

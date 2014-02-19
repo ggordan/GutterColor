@@ -1,0 +1,16 @@
+[
+    {
+        "caption": "Preferences: GutterColor Settings – Default",
+        "command": "open_file", "args":
+        {
+            "file": "${packages}/GutterColor/GutterColor.sublime-settings"
+        }
+    },
+    {
+        "caption": "Preferences: GutterColor Settings – User",
+        "command": "open_file", "args":
+        {
+            "file": "${packages}/User/GutterColor.sublime-settings"
+        }
+    }
+]
