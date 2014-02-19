@@ -33,22 +33,14 @@ class File(Thread):
       * adding regions for all the found colours
     """
 
-    # Create the icon directory if it doesn't already exist
-    if not exists(self.icon_path()): makedirs(self.icon_path())
-
     # Return a list of all the line regions in the current file
     line_regions = self.view.lines(Region(0, self.view.size()))
-
-    # Open the cache document
-    file = open(self.cache_path(), 'w+')
 
     for line_number, region in enumerate(line_regions):
 
       line = Line(self.view, line_number, region, self.id)
       if line.has_color():
         line.add_region()
-        file.write(line.formatted_line())
-
 
   def update(self):
     """Initialize the file by:
@@ -57,22 +49,14 @@ class File(Thread):
       * adding regions for all the found colours
     """
 
-    file = open(self.cache_path(), 'r').readlines()
-    existing_lines = []
-    for line in file:
-      obj = line.strip().split('|')
-      existing_lines.append(obj[0])
     # Return a list of all the lines in the current view
     lines = self.view.lines(Region(0, self.view.size()))
 
-    # Open the document for writing
-    file = open(self.cache_path(), 'w+')
     # Iterate through the lines
     for line_number, region in enumerate(lines):
       line = Line(self.view, line_number, region, self.id)
       if line.has_color():
         line.add_region()
-        file.write(line.formatted_line())
       else:
         self.view.erase_regions("gutter_color_%s" % line_number)
 
