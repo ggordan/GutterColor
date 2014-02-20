@@ -1,38 +1,45 @@
-import sublime_plugin
-import GutterColor.settings as settings
-from GutterColor.clean import Clean
 from GutterColor.file import File
-import sublime
+from sublime_plugin import EventListener
+from sublime import load_settings
 
-class GutterColorEventListener(sublime_plugin.EventListener):
 
-  def on_load_async(self, view):
-    '''Initialize the file by creating the regions'''
+def plugin_loaded():
+    """
+    If the folder exists, delete it to clear all the icons then recreate it.
+    """
+    from os import makedirs, path
+    from sublime import cache_path
+    from shutil import rmtree
+    icon_path = path.join(cache_path(), "GutterColor")
+
+    if path.exists(icon_path):
+      rmtree(icon_path)
+
+    makedirs(icon_path)
+
+
+class GutterColorEventListener(EventListener):
+  """Scan the view when it gains focus, and when it is saved."""
+
+  def on_activated_async(self, view):
+    """Scan file when it gets focus"""
     if syntax(view) in settings().get('supported_syntax'):
-      File(view).start()
+      File(view)
+
+  def on_modified(self, view):
+    """Scan file when it gets focus"""
+    if syntax(view) in settings().get('supported_syntax'):
+      File(view, 'update')
 
   def on_pre_save_async(self, view):
-    '''Update the regions in the view'''
+    """Scan file when it gets focus"""
     if syntax(view) in settings().get('supported_syntax'):
-      File(view, 'update').start()
-
-  def on_pre_close(self, view):
-    """
-    Ensure that all the assets are deleted, including for files which are
-    somehow hanging around.
-    N.B. This needs to be a on_pre_close() since view.window() isn't accessible
-    on on_close().
-    """
-    if syntax(view) in settings().get('supported_syntax'):
-      views = map(lambda x: x.views(), sublime.windows())
-      open_files = list(map((lambda x: x.buffer_id()), [x for y in views for x in y]))
-      Clean(open_files).start()
-
+      File(view, 'update')
 
 def settings():
   """Shortcut to the settings"""
-  return sublime.load_settings("GutterColor.sublime-settings")
+  return load_settings("GutterColor.sublime-settings")
 
 def syntax(view):
-  """Return the current file syntax"""
+  """Return the view syntax"""
   return view.settings().get('syntax').split('/')[-1].split('.')[0].lower()
