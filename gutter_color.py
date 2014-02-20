@@ -2,21 +2,27 @@ from GutterColor.file import File
 from sublime_plugin import EventListener
 from sublime import load_settings
 
-
 def plugin_loaded():
     """
-    If the folder exists, delete it to clear all the icons then recreate it.
+    If the folder exists, and has more than 5MB of icons in the cache, delete
+    it to clear all the icons then recreate it.
     """
-    from os import makedirs, path
+    from os.path import getsize, join, isfile, exists
+    from os import makedirs, listdir
     from sublime import cache_path
     from shutil import rmtree
-    icon_path = path.join(cache_path(), "GutterColor")
 
-    if path.exists(icon_path):
-      rmtree(icon_path)
+    # The icon cache path
+    icon_path = join(cache_path(), "GutterColor")
 
-    makedirs(icon_path)
+    # The maximum amount of space to take up
+    limit = 5242880 # 5 MB
 
+    # Get the size of the cache folder
+    size = sum(getsize(join(icon_path, f)) for f in listdir(icon_path) if isfile(join(icon_path, f)))
+
+    if size > limit: rmtree(icon_path)
+    if not exists(icon_path): makedirs(icon_path)
 
 class GutterColorEventListener(EventListener):
   """Scan the view when it gains focus, and when it is saved."""
