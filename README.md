@@ -8,6 +8,12 @@ Gutter Color is a Sublime Text plugin which displays a colored icon for all line
 
 * ImageMagick
 
+## Configure
+
+* Install ImageMagick
+* Set the `convert_path` in `Preferences: GutterColor Settings – User`.
+
+
 ## TODO
 
 * Add support for identifying RGB(a) colours
