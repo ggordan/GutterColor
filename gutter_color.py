@@ -33,12 +33,12 @@ class GutterColorEventListener(EventListener):
       File(view)
 
   def on_modified(self, view):
-    """Scan file when it gets focus"""
+    """Scan file when it is modified"""
     if syntax(view) in settings().get('supported_syntax'):
       File(view, 'update')
 
   def on_pre_save_async(self, view):
-    """Scan file when it gets focus"""
+    """Scan file before it is saved"""
     if syntax(view) in settings().get('supported_syntax'):
       File(view, 'update')
 
