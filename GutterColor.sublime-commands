@@ -3,7 +3,7 @@
         "caption": "Preferences: GutterColor Settings – Default",
         "command": "open_file", "args":
         {
-            "file": "${packages}/GutterColor/GutterColor.sublime-settings"
+            "file": "${packages}/Gutter Color/GutterColor.sublime-settings"
         }
     },
     {
