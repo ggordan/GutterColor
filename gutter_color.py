@@ -1,4 +1,4 @@
-from GutterColor.file import File
+from .file import File
 from sublime_plugin import EventListener
 from sublime import load_settings
 

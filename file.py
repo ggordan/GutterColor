@@ -1,6 +1,6 @@
 from sublime import Region
 from threading import Thread
-from GutterColor.line import Line
+from .line import Line
 
 class File():
   """ A File corresponds to one sublime.View """
