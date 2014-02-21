@@ -18,10 +18,10 @@ def plugin_loaded():
     # The maximum amount of space to take up
     limit = 5242880 # 5 MB
 
-    # Get the size of the cache folder
-    size = sum(getsize(join(icon_path, f)) for f in listdir(icon_path) if isfile(join(icon_path, f)))
+    if exists(icon_path):
+      size = sum(getsize(join(icon_path, f)) for f in listdir(icon_path) if isfile(join(icon_path, f)))
+      if size > limit: rmtree(icon_path)
 
-    if size > limit: rmtree(icon_path)
     if not exists(icon_path): makedirs(icon_path)
 
 class GutterColorEventListener(EventListener):
