@@ -1,6 +1,7 @@
 from os.path import join, dirname, realpath, isfile
 from os import system, remove
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
+import subprocess
 import re
 
 class Line:
@@ -17,13 +18,19 @@ class Line:
 
   def color(self):
     """Returns the color in the line, if any."""
-    color = re.search("#(?:[0-9a-fA-F]{3}){1,2}", self.view.substr(self.region))
-    if color:
-      color = color.group(0)
-      if len(color[1:]) is 3:
-        return "%s%s" % (color[1:], color[1:])
+    matches = re.search("#((?:[0-9a-fA-F]{3}){1,2})", self.view.substr(self.region))
+    if matches:
+      color = matches.group(1)
+      if len(color) == 3:
+        return "%s%s%s%s%s%s" % (
+          color[0],
+          color[0],
+          color[1],
+          color[1],
+          color[2],
+          color[2])
       else:
-        return "%s" % color[1:]
+        return color
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
@@ -50,6 +57,14 @@ class Line:
 
   def create_icon(self):
     """Create the color icon using ImageMagick convert"""
-    script = "%s -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA -size 16x16 -alpha transparent xc: -fill '#%s' -draw 'circle 7,7 8,10' png32:\"%s\"" % (self.settings.get("convert_path"), self.color(), self.icon_path())
+    script = "%s -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
+      "-size 16x16 -alpha transparent xc:none " \
+      "-fill \"#%s\" -draw \"circle 7,7 8,10\" png32:\"%s\"" % \
+      (self.settings.get("convert_path"), self.color(), self.icon_path())
     if not isfile(self.icon_path()):
-      system(script)
+        pr = subprocess.Popen(script,
+          shell = True,
+          stdout = subprocess.PIPE,
+          stderr = subprocess.PIPE,
+          stdin = subprocess.PIPE)
+        (result, error) = pr.communicate()
