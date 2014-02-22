@@ -1,6 +1,7 @@
 from os.path import join, dirname, realpath, isfile
 from os import system, remove
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
+import subprocess
 import re
 
 class Line:
@@ -52,4 +53,9 @@ class Line:
     """Create the color icon using ImageMagick convert"""
     script = "%s -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA -size 16x16 -alpha transparent xc: -fill '#%s' -draw 'circle 7,7 8,10' png32:\"%s\"" % (self.settings.get("convert_path"), self.color(), self.icon_path())
     if not isfile(self.icon_path()):
-      system(script)
+        pr = subprocess.Popen(script,
+          shell = True,
+          stdout = subprocess.PIPE,
+          stderr = subprocess.PIPE,
+          stdin = subprocess.PIPE)
+        (result, error) = pr.communicate()
