@@ -18,13 +18,19 @@ class Line:
 
   def color(self):
     """Returns the color in the line, if any."""
-    color = re.search("#(?:[0-9a-fA-F]{3}){1,2}", self.view.substr(self.region))
-    if color:
-      color = color.group(0)
-      if len(color[1:]) is 3:
-        return "%s%s" % (color[1:], color[1:])
+    matches = re.search("#((?:[0-9a-fA-F]{3}){1,2})", self.view.substr(self.region))
+    if matches:
+      color = matches.group(1)
+      if len(color) == 3:
+        return "%s%s%s%s%s%s" % (
+          color[0],
+          color[0],
+          color[1],
+          color[1],
+          color[2],
+          color[2])
       else:
-        return "%s" % color[1:]
+        return color
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
