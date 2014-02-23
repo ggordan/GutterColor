@@ -1,14 +1,24 @@
-from sublime import Region
+from sublime import Region, version
 from threading import Thread
-from .line import Line
 
-class File():
+# True if Sublime Text 3
+ST3 = (int(version()) >= 3000)
+
+if ST3: from .line import Line
+else: from line import Line
+
+class File(Thread):
   """ A File corresponds to one sublime.View """
 
   def __init__(self, view, action = 'initialize'):
-    self.view = view # sublime.View
-    self.id   = self.view.buffer_id()
+    Thread.__init__(self)    
+    self.view   = view # sublime.View
+    self.id     = self.view.buffer_id()
     self.action = action
+    if ST3 or action == 'update':
+    	self.scan()
+
+  def run(self):
     self.scan()
 
   def scan(self):

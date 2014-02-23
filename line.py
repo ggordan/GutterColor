@@ -1,8 +1,12 @@
 from os.path import join, dirname, realpath, isfile
 from os import system, remove
-from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
+from sublime import HIDDEN, PERSISTENT, load_settings, version
+import sublime
 import subprocess
 import re
+
+# True if Sublime Text 3
+ST3 = (int(sublime.version()) >= 3000)
 
 class Line:
 
@@ -54,11 +58,19 @@ class Line:
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
-    return join(cache_path(), 'GutterColor', '%s.png' % self.color())
+    if ST3:
+      cache_dir = join(sublime.cache_path(), 'GutterColor')
+    else:
+      cache_dir = join(sublime.packages_path(), 'Theme - Default', 'GutterColor')    
+    return join(cache_dir, '%s.png' % self.color())
 
   def relative_icon_path(self):
     """The relative location of the color icon"""
-    return "Cache/GutterColor/%s.png" % (self.color())
+    if ST3:
+      icon_path = "Cache/GutterColor/%s.png"    
+    else:
+      icon_path = "GutterColor/%s"
+    return icon_path % (self.color())
 
   def add_region(self):
     """Add the icon to the gutter"""
