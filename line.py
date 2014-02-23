@@ -6,11 +6,15 @@ import re
 
 class Line:
 
+  HEX_REGEXP = '#((?:[0-9a-fA-F]{3}){1,2})'
+  RGB_REGEXP = 'rgb\((\s*\d{1,3}\s*),(\s*\d{1,3}\s*),(\s*\d{1,3}\s*)?\)'
+
   def __init__(self, view, region, file_id):
     self.view     = view
     self.region   = region
     self.file_id  = file_id
     self.settings = load_settings("GutterColor.sublime-settings")
+    self.text     = self.view.substr(self.region)
 
   def has_color(self):
     """Returns True/False depending on whether the line has a color in it"""
@@ -22,7 +26,7 @@ class Line:
 
   def hex_color(self):
     """Returns the color in the line, if any hex is found."""
-    matches = re.search("#((?:[0-9a-fA-F]{3}){1,2})", self.view.substr(self.region))
+    matches = re.search(Line.HEX_REGEXP, self.text)
     if matches:
       color = matches.group(1)
       if len(color) == 3:
@@ -38,7 +42,7 @@ class Line:
 
   def rgb_color(self):
     """Returns the color in the line, if any rgb is found."""
-    matches = re.search('rgb\((\s*\d{1,3}\s*),(\s*\d{1,3}\s*),(\s*\d{1,3}\s*)?\)', self.view.substr(self.region))
+    matches = re.search(Line.RGB_REGEXP, self.text)
     if matches:
       try:
         r = int(matches.group(1), 10)
