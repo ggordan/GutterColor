@@ -1,5 +1,9 @@
 [
     {
+        "caption": "GutterColor: Clear Cache",
+        "command": "gutter_color_clear_cache"
+    },
+    {
         "caption": "Preferences: GutterColor Settings – Default",
         "command": "open_file", "args":
         {
