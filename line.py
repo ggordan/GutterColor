@@ -18,6 +18,10 @@ class Line:
 
   def color(self):
     """Returns the color in the line, if any."""
+    return self.hex_color() if self.hex_color() else self.rgb_color()
+
+  def hex_color(self):
+    """Returns the color in the line, if any hex is found."""
     matches = re.search("#((?:[0-9a-fA-F]{3}){1,2})", self.view.substr(self.region))
     if matches:
       color = matches.group(1)
@@ -31,6 +35,15 @@ class Line:
           color[2])
       else:
         return color
+
+  def rgb_color(self):
+    """Returns the color in the line, if any rgb is found."""
+    matches = re.search('^rgb\((\s*\d+\s*),(\s*\d+\s*),(\s*\d+\s*)?\)$', self.view.substr(self.region))
+    if matches:
+      r = int(matches.group(1), 10)
+      g = int(matches.group(2), 10)
+      b = int(matches.group(3), 10)
+      return "%02x%02x%02x" % (r, g, b)
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
