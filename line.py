@@ -38,7 +38,7 @@ class Line:
 
   def rgb_color(self):
     """Returns the color in the line, if any rgb is found."""
-    matches = re.search('^rgb\((\s*\d+\s*),(\s*\d+\s*),(\s*\d+\s*)?\)$', self.view.substr(self.region))
+    matches = re.search('rgb\((\s*\d{1,3}\s*),(\s*\d{1,3}\s*),(\s*\d{1,3}\s*)?\)', self.view.substr(self.region))
     if matches:
       r = int(matches.group(1), 10)
       g = int(matches.group(2), 10)
