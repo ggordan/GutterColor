@@ -40,10 +40,13 @@ class Line:
     """Returns the color in the line, if any rgb is found."""
     matches = re.search('rgb\((\s*\d{1,3}\s*),(\s*\d{1,3}\s*),(\s*\d{1,3}\s*)?\)', self.view.substr(self.region))
     if matches:
-      r = int(matches.group(1), 10)
-      g = int(matches.group(2), 10)
-      b = int(matches.group(3), 10)
-      return "%02x%02x%02x" % (r, g, b)
+      try:
+        r = int(matches.group(1), 10)
+        g = int(matches.group(2), 10)
+        b = int(matches.group(3), 10)
+        return "%02x%02x%02x" % (r, g, b)
+      except TypeError:
+        pass
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
