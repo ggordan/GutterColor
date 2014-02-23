@@ -1,0 +1,38 @@
+[
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "GutterColor",
+                        "children":
+                        [
+                        	{
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/GutterColor/GutterColor.sublime-settings"
+                                },
+                                "caption": "Settings - Default"
+                            },
+                        	{
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/GutterColor.sublime-settings"
+                                },
+                                "caption": "Settings - User"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
