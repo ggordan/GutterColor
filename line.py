@@ -78,8 +78,8 @@ class Line:
   def create_icon(self):
     """Create the color icon using ImageMagick convert"""
     script = "%s -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
-      "-size 16x16 -alpha transparent xc:none " \
-      "-fill \"#%s\" -draw \"circle 7,7 8,10\" png32:\"%s\"" % \
+      "-size 32x32 -alpha transparent xc:none " \
+      "-fill \"#%s\" -draw \"circle 15,16 8,10\" png32:\"%s\"" % \
       (self.settings.get("convert_path"), self.color(), self.icon_path())
     if not isfile(self.icon_path()):
         pr = subprocess.Popen(script,
