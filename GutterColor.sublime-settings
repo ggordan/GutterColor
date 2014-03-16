@@ -1,4 +1,3 @@
-
 /*
     GutterColor Default Settings
 */
@@ -13,6 +12,6 @@
   /*
    * The syntax for which to run GutterColor.
    */
-  "supported_syntax": ["css", "scss", "sass", "less"]
+  "supported_syntax": ["css", "scss", "sass", "less", "stylus"]
 
 }
