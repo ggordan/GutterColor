@@ -1,0 +1,122 @@
+/* From https://developer.mozilla.org/en-US/docs/Web/CSS/color_value */
+
+.HEX3 {
+  background-color: #000;    /* black */
+  background-color: #888;    /* gray */
+  background-color: #FFF;    /* white */
+  background-color: #800;    /* maroon */
+  background-color: #F00;    /* red */
+  background-color: #808;    /* purple */
+  background-color: #F0F;    /* fuchsia */
+  background-color: #080;    /* green */
+  background-color: #0F0;    /* lime */
+  background-color: #880;    /* olive */
+  background-color: #FF0;    /* yellow */
+  background-color: #008;    /* navy */
+  background-color: #00F;    /* blue */
+  background-color: #088;    /* teal */
+  background-color: #0FF;    /* aqua */
+}
+
+.HEX6 {
+  background-color: #000000;    /* black */
+  background-color: #888888;    /* gray */
+  background-color: #FFFFFF;    /* white */
+  background-color: #880000;    /* maroon */
+  background-color: #FF0000;    /* red */
+  background-color: #880088;    /* purple */
+  background-color: #FF00FF;    /* fuchsia */
+  background-color: #008800;    /* green */
+  background-color: #00FF00;    /* lime */
+  background-color: #888800;    /* olive */
+  background-color: #FFFF00;    /* yellow */
+  background-color: #000088;    /* navy */
+  background-color: #0000FF;    /* blue */
+  background-color: #008888;    /* teal */
+  background-color: #00FFFF;    /* aqua */
+}
+
+.RGB {
+  background-color: rgb(  0,   0,   0);    /* black */
+  background-color: rgb(128, 128, 128);    /* gray */
+  background-color: rgb(255, 255, 255);    /* white */
+  background-color: rgb(128,   0,   0);    /* maroon */
+  background-color: rgb(255,   0,   0);    /* red */
+  background-color: rgb(128,   0, 128);    /* purple */
+  background-color: rgb(255,   0, 255);    /* fuchsia */
+  background-color: rgb(  0, 128,   0);    /* green */
+  background-color: rgb(  0, 255,   0);    /* lime */
+  background-color: rgb(128, 128,   0);    /* olive */
+  background-color: rgb(255, 255,   0);    /* yellow */
+  background-color: rgb(  0,   0, 128);    /* navy */
+  background-color: rgb(  0,   0, 255);    /* blue */
+  background-color: rgb(  0, 128, 128);    /* teal */
+  background-color: rgb(  0, 255, 255);    /* aqua */
+}
+
+.RGBA {
+  background-color: rgba(  0,   0,   0, 0.3);    /* black */
+  background-color: rgba(128, 128, 128, 0.3);    /* gray */
+  background-color: rgba(255, 255, 255, 0.3);    /* white */
+  background-color: rgba(128,   0,   0, 0.3);    /* maroon */
+  background-color: rgba(255,   0,   0, 0.3);    /* red */
+  background-color: rgba(128,   0, 128, 0.3);    /* purple */
+  background-color: rgba(255,   0, 255, 0.3);    /* fuchsia */
+  background-color: rgba(  0, 128,   0, 0.3);    /* green */
+  background-color: rgba(  0, 255,   0, 0.3);    /* lime */
+  background-color: rgba(128, 128,   0, 0.3);    /* olive */
+  background-color: rgba(255, 255,   0, 0.3);    /* yellow */
+  background-color: rgba(  0,   0, 128, 0.3);    /* navy */
+  background-color: rgba(  0,   0, 255, 0.3);    /* blue */
+  background-color: rgba(  0, 128, 128, 0.3);    /* teal */
+  background-color: rgba(  0, 255, 255, 0.3);    /* aqua */
+}
+
+
+.HSL {
+  background-color: hsl(  0, 100%, 50%);    /* red */
+  background-color: hsl( 30, 100%, 50%);    /* orange */
+  background-color: hsl( 60, 100%, 50%);    /* yellow */
+  background-color: hsl( 90, 100%, 50%);    /* green */
+  background-color: hsl(120, 100%, 50%);    /* green */
+  background-color: hsl(150, 100%, 50%);    /* green */
+  background-color: hsl(180, 100%, 50%);    /* blue */
+  background-color: hsl(210, 100%, 50%);    /* blue */
+  background-color: hsl(240, 100%, 50%);    /* blue */
+  background-color: hsl(270, 100%, 50%);    /* purple */
+  background-color: hsl(300, 100%, 50%);    /* pink */
+  background-color: hsl(330, 100%, 50%);    /* pinkish */
+  background-color: hsl(360, 100%, 50%);    /* red */
+  background-color: hsl(120, 100%, 25%);    /* dark green */
+  background-color: hsl(120, 100%, 50%);    /* green */
+  background-color: hsl(120, 100%, 75%);    /* light green */
+  background-color: hsl(120, 100%, 50%);    /* green */
+  background-color: hsl(120,  67%, 50%);    /* green */
+  background-color: hsl(120,  33%, 50%);    /* green */
+  background-color: hsl(120,   0%, 50%);    /* gray */
+  background-color: hsl(120,  60%, 70%);    /* pastel green */
+}
+
+.HSLA {
+  background-color: hsla(  0, 100%, 50%, 0.3);    /* red */
+  background-color: hsla( 30, 100%, 50%, 0.3);    /* orange */
+  background-color: hsla( 60, 100%, 50%, 0.3);    /* yellow */
+  background-color: hsla( 90, 100%, 50%, 0.3);    /* green */
+  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
+  background-color: hsla(150, 100%, 50%, 0.3);    /* green */
+  background-color: hsla(180, 100%, 50%, 0.3);    /* blue */
+  background-color: hsla(210, 100%, 50%, 0.3);    /* blue */
+  background-color: hsla(240, 100%, 50%, 0.3);    /* blue */
+  background-color: hsla(270, 100%, 50%, 0.3);    /* purple */
+  background-color: hsla(300, 100%, 50%, 0.3);    /* pink */
+  background-color: hsla(330, 100%, 50%, 0.3);    /* pinkish */
+  background-color: hsla(360, 100%, 50%, 0.3);    /* red */
+  background-color: hsla(120, 100%, 25%, 0.3);    /* dark green */
+  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
+  background-color: hsla(120, 100%, 75%, 0.3);    /* light green */
+  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
+  background-color: hsla(120,  67%, 50%, 0.3);    /* green */
+  background-color: hsla(120,  33%, 50%, 0.3);    /* green */
+  background-color: hsla(120,   0%, 50%, 0.3);    /* gray */
+  background-color: hsla(120,  60%, 70%, 0.3);    /* pastel green */
+}
