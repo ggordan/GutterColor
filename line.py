@@ -73,7 +73,6 @@ class Line:
   def hsla_color(self):
     """Returns the color in the line, if any rgba is found."""
     matches = re.search(Line.HSLA_REGEXP, self.text)
-    print(matches.group(1))
     if matches:
       return 'hsl(' + matches.group(1) + ')'
 
