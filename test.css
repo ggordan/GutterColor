@@ -1,5 +1,41 @@
 /* From https://developer.mozilla.org/en-US/docs/Web/CSS/color_value */
 
+.HEX3 {
+  background-color: #000;    /* black */
+  background-color: #888;    /* gray */
+  background-color: #FFF;    /* white */
+  background-color: #800;    /* maroon */
+  background-color: #F00;    /* red */
+  background-color: #808;    /* purple */
+  background-color: #F0F;    /* fuchsia */
+  background-color: #080;    /* green */
+  background-color: #0F0;    /* lime */
+  background-color: #880;    /* olive */
+  background-color: #FF0;    /* yellow */
+  background-color: #008;    /* navy */
+  background-color: #00F;    /* blue */
+  background-color: #088;    /* teal */
+  background-color: #0FF;    /* aqua */
+}
+
+.HEX6 {
+  background-color: #000000;    /* black */
+  background-color: #888888;    /* gray */
+  background-color: #FFFFFF;    /* white */
+  background-color: #880000;    /* maroon */
+  background-color: #FF0000;    /* red */
+  background-color: #880088;    /* purple */
+  background-color: #FF00FF;    /* fuchsia */
+  background-color: #008800;    /* green */
+  background-color: #00FF00;    /* lime */
+  background-color: #888800;    /* olive */
+  background-color: #FFFF00;    /* yellow */
+  background-color: #000088;    /* navy */
+  background-color: #0000FF;    /* blue */
+  background-color: #008888;    /* teal */
+  background-color: #00FFFF;    /* aqua */
+}
+
 .RGB {
   background-color: rgb(  0,   0,   0);    /* black */
   background-color: rgb(128, 128, 128);    /* gray */
@@ -18,7 +54,7 @@
   background-color: rgb(  0, 255, 255);    /* aqua */
 }
 
-.RGB {
+.RGBA {
   background-color: rgba(  0,   0,   0, 0.3);    /* black */
   background-color: rgba(128, 128, 128, 0.3);    /* gray */
   background-color: rgba(255, 255, 255, 0.3);    /* white */
