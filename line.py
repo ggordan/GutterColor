@@ -1,8 +1,6 @@
 from os.path import join, dirname, realpath, isfile
-from os import system, remove
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
-import subprocess
-import re
+import subprocess, os, glob, re
 
 class Line:
 
@@ -101,11 +99,26 @@ class Line:
     self.view.erase_regions("gutter_color_%s" % self.region.a)
 
   def create_icon(self):
+    paths = [
+      "/usr/bin/convert",
+      "/usr/local/bin"
+    ]
+
+    paths.extend(glob.glob('/usr/local/Cellar/imagemagick/*/bin'))
+    paths.extend(os.environ['PATH'].split(":"))
+    paths.extend(self.settings.get("convert_path"))
+
+    convert_path = None
+    for path in paths:
+      if os.path.isfile(path+"/convert") and os.access(path+"/convert", os.X_OK):
+        convert_path = path+"/convert"
+        break
+
     """Create the color icon using ImageMagick convert"""
     script = "\"%s\" -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
       "-size 32x32 -alpha transparent xc:none " \
       "-fill \"%s\" -draw \"circle 15,16 8,10\" png32:\"%s\"" % \
-      (self.settings.get("convert_path"), self.color(), self.icon_path())
+      (convert_path, self.color(), self.icon_path())
     if not isfile(self.icon_path()):
         pr = subprocess.Popen(script,
           shell = True,
