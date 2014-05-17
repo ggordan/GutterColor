@@ -13,7 +13,7 @@ class Line:
 
   # Four digits is three digits (which we save for later),
   # and then a comma and then the fourth digit.
-  FOUR_DIGITS = '(' + THREE_DIGITS + '),' + DIGIT
+  FOUR_DIGITS = THREE_DIGITS + ',' + DIGIT
 
   HEX_REGEXP = '#((?:[0-9a-fA-F]{3}){1,2}(?![0-9a-fA-F]+))'
   RGB_REGEXP = 'rgb\(' + THREE_DIGITS + '\)'
