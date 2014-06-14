@@ -1,6 +1,6 @@
 from os.path import join, dirname, realpath, isfile
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
-import subprocess, os, glob, re
+import subprocess, os, glob, re, platform
 
 class Line:
 
@@ -104,15 +104,23 @@ class Line:
       "/usr/local/bin"
     ]
 
+    if ( platform.system()=="Windows"):
+      delimiter = ";"
+      convert_name = "convert.exe"
+    else:
+      delimiter = ":"
+      convert_name = "convert"
+
     paths.extend(glob.glob('/usr/local/Cellar/imagemagick/*/bin'))
     paths.extend(os.environ['PATH'].split(":"))
     paths.extend(self.settings.get("convert_path"))
 
     convert_path = None
     for path in paths:
-      if os.path.isfile(path+"/convert") and os.access(path+"/convert", os.X_OK):
-        convert_path = path+"/convert"
+      if os.path.isfile(os.path.join(path,convert_name)) and os.access(os.path.join(path,convert_name), os.X_OK):
+        convert_path = os.path.join(path,convert_name)
         break
+
 
     """Create the color icon using ImageMagick convert"""
     script = "\"%s\" -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
