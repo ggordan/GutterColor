@@ -112,8 +112,8 @@ class Line:
       convert_name = "convert"
 
     paths.extend(glob.glob('/usr/local/Cellar/imagemagick/*/bin'))
-    paths.extend(os.environ['PATH'].split(":"))
-    paths.extend(self.settings.get("convert_path"))
+    paths.extend(os.environ['PATH'].split(delimiter))
+    paths.append(self.settings.get("convert_path"))
 
     convert_path = None
     for path in paths:
