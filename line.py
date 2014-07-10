@@ -101,7 +101,8 @@ class Line:
   def create_icon(self):
     paths = [
       "/usr/bin/convert",
-      "/usr/local/bin"
+      "/usr/local/bin",
+      "/usr/bin"
     ]
 
     paths.extend(glob.glob('/usr/local/Cellar/imagemagick/*/bin'))
