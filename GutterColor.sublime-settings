@@ -14,4 +14,24 @@
    */
   "supported_syntax": ["css", "scss", "sass", "less", "stylus", "css3", "xml"]
 
+  /*
+   * Additional user-defined color matches.
+   */
+/*
+  "custom_colors": [
+    {
+      // The rule to match
+      "regex": "(['\"])((?:[0-9a-fA-F]{3}){1,2}(?![0-9a-fA-F]+))\\1",
+      // The capture group to use; defaults to 0 (the whole expression)
+      "group_id": 2,
+      // Strings to be concatenated before sending to ImageMagic
+      "output_prefix": "#",
+      "output_suffix": ""
+    },{
+      "regex": "color=([0-9a-fA-F]{6})",
+      "group_id": 1,
+      "output_prefix": "#"
+    }]
+*/
+
 }
