@@ -32,7 +32,7 @@ class Line:
     """Returns True/False depending on whether the line has a color in it"""
     return True if self.color() else False
 
-  def color(self):
+def color(self):
     """Returns the color in the line, if any."""
     if self.hex_color():
       return self.hex_color()
@@ -42,7 +42,10 @@ class Line:
       return self.rgba_color()
     if self.hsl_color():
       return self.hsl_color()
-    return self.hsla_color()
+    if self.hsla_color():
+      return self.hsla_color()
+    if not self.settings.get("custom_colors") == None:
+      return self.custom_color()
 
   def hex_color(self):
     """Returns the color in the line, if any hex is found."""
@@ -73,6 +76,17 @@ class Line:
     matches = re.search(Line.HSLA_REGEXP, self.text)
     if matches:
       return 'hsl(' + matches.group(1) + ')'
+
+  def custom_color(self):
+    """Returns the color in the line, if any user-defined is found."""
+    user_colors = self.settings.get("custom_colors")
+    for user_color in user_colors:
+      matches = re.search(user_color["regex"], self.text)
+      group_id = user_color["group_id"] if "group_id" in user_color else 0
+      prefix = user_color["output_prefix"] if "output_prefix" in user_color else ""
+      suffix = user_color["output_suffix"] if "output_suffix" in user_color else ""
+      if matches:
+        return prefix+matches.group(group_id)+suffix
 
 
   def icon_path(self):
