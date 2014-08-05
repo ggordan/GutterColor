@@ -32,7 +32,7 @@ class Line:
     """Returns True/False depending on whether the line has a color in it"""
     return True if self.color() else False
 
-def color(self):
+  def color(self):
     """Returns the color in the line, if any."""
     if self.hex_color():
       return self.hex_color()
