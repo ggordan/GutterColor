@@ -25,3 +25,6 @@ Gutter Color is a Sublime Text plugin which displays a colored icon for all line
 * Add support for SASS/LESS variables
 * Backport to ST2
 * Handle conflicts with GitGutter/VCS Gutter
+
+## Thanks
+Thanks to all of the [contributors](https://github.com/ggordan/GutterColor/graphs/contributors) who continue to improve GutterColor!
