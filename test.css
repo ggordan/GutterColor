@@ -18,6 +18,24 @@
   background-color: #0FF;    /* aqua */
 }
 
+.HEX3LOWER {
+  background-color: #000;    /* black */
+  background-color: #888;    /* gray */
+  background-color: #fff;    /* white */
+  background-color: #800;    /* maroon */
+  background-color: #f00;    /* red */
+  background-color: #808;    /* purple */
+  background-color: #f0f;    /* fuchsia */
+  background-color: #080;    /* green */
+  background-color: #0f0;    /* lime */
+  background-color: #880;    /* olive */
+  background-color: #ff0;    /* yellow */
+  background-color: #008;    /* navy */
+  background-color: #00f;    /* blue */
+  background-color: #088;    /* teal */
+  background-color: #0ff;    /* aqua */
+}
+
 .HEX6 {
   background-color: #000000;    /* black */
   background-color: #888888;    /* gray */
@@ -34,6 +52,24 @@
   background-color: #0000FF;    /* blue */
   background-color: #008888;    /* teal */
   background-color: #00FFFF;    /* aqua */
+}
+
+.HEX6LOWER {
+  background-color: #000000;    /* black */
+  background-color: #888888;    /* gray */
+  background-color: #ffffff;    /* white */
+  background-color: #880000;    /* maroon */
+  background-color: #ff0000;    /* red */
+  background-color: #880088;    /* purple */
+  background-color: #ff00ff;    /* fuchsia */
+  background-color: #008800;    /* green */
+  background-color: #00ff00;    /* lime */
+  background-color: #888800;    /* olive */
+  background-color: #ffff00;    /* yellow */
+  background-color: #000088;    /* navy */
+  background-color: #0000ff;    /* blue */
+  background-color: #008888;    /* teal */
+  background-color: #00ffff;    /* aqua */
 }
 
 .RGB {
