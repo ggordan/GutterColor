@@ -2,3 +2,4 @@ icons/*.png
 icons/
 *.pyc
 .cache/
+*.gcfix.tmTheme

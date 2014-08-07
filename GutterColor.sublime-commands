@@ -4,6 +4,10 @@
         "command": "gutter_color_clear_cache"
     },
     {
+        "caption": "GutterColor: Fix Current Color Scheme",
+        "command": "gutter_color_fix_current_scheme"
+    },
+    {
         "caption": "Preferences: GutterColor Settings – Default",
         "command": "open_file", "args":
         {
