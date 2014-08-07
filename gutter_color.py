@@ -72,7 +72,7 @@ def fix_schemes_in_windows():
       if syntax(view) in settings().get('supported_syntax'):
         fix_scheme_in_view(view)
 
-def fix_scheme_in_view(view, regenerate=False):
+def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
   """Change color scheme in settings relevant to current view"""
   fix_flag = settings().get("fix_color_schemes", False)
   (fix_syntax, fix_global, fix_custom) = (False, False, False)
@@ -88,6 +88,8 @@ def fix_scheme_in_view(view, regenerate=False):
       if ".sublime-settings" in label:
         fix_custom = True
         custom_files.append(label)
+  elif ignore_flags:
+    pass # otherwise we might quit when we want to force a check contrary to user prefs
   else:
     return # setting is false, nonexistant, or malformed, so exit
 
@@ -106,11 +108,11 @@ def fix_scheme_in_view(view, regenerate=False):
     for custom_filename in custom_files:
       if fix_scheme_in_settings(custom_filename, current_scheme, new_scheme):
         return
-  if fix_syntax:
+  if fix_syntax or ignore_flags:
     syntax_filename = view.settings().get('syntax').split('/')[-1].split('.')[0] + ".sublime-settings"
     if fix_scheme_in_settings(syntax_filename, current_scheme, new_scheme):
       return
-  if fix_global:
+  if fix_global or ignore_flags:
     if fix_scheme_in_settings("Preferences.sublime-settings", current_scheme, new_scheme):
       return
   print("Could not find or access the settings file where current color_scheme ("+current_scheme+") is set.")
@@ -155,4 +157,4 @@ def generate_scheme_fix(old_scheme, new_scheme_path):
 
 class GutterColorFixCurrentScheme(TextCommand):
   def run(self, args):
-    fix_scheme_in_view(self.view, True)
+    fix_scheme_in_view(self.view, True, True)
