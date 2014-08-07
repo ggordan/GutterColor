@@ -1,0 +1,11 @@
+	<dict>
+		<key>name</key>
+		<string>GutterColor</string>
+		<key>scope</key>
+		<string>gutter_color</string>
+		<key>settings</key>
+		<dict>
+			<key>foreground</key>
+			<string>#ffffff</string>
+		</dict>
+	</dict>

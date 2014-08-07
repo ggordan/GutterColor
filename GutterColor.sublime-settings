@@ -12,7 +12,18 @@
   /*
    * The syntax for which to run GutterColor.
    */
-  "supported_syntax": ["css", "scss", "sass", "less", "stylus", "css3", "xml"]
+  "supported_syntax": ["css", "scss", "sass", "less", "stylus", "css3", "xml"],
+
+  /*
+   * Whether Gutter Color should automatically create a new version of the active
+   * color scheme that doesn't darken gutter icons. (common on light backgrounds)
+   *
+   * Valid values are "syntax-specific"/"syntax", "global"/"user", and other
+   * settings files (e.g. "Packages/SomePlugin/SomePlugin.sublime-settings")
+   *
+   * "fix_color_schemes": true is eqivalent to ["global", "syntax-specific"]
+   */
+  "fix_color_schemes": ["global", "syntax-specific"]
 
   /*
    * Additional user-defined color matches.
