@@ -135,12 +135,21 @@ def fix_scheme_in_settings(settings_file,current_scheme, new_scheme, regenerate=
 def generate_scheme_fix(old_scheme, new_scheme_path):
   """Appends background-correction XML to a color scheme file"""
   from os.path import join
+  from re import sub
+  UUID_REGEX = '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}'
 
   with open(join(packages_path(),current_directory(),'background_fix.xml')) as f:
     xml = f.read()
   scheme_data = load_resource(old_scheme) # only valid for ST3 API!
+
   insertion_point = scheme_data.rfind("</array>")
   new_scheme_data = scheme_data[:insertion_point] + xml + scheme_data[insertion_point:]
+
+  def uuid_gen(args):
+    from uuid import uuid4
+    return str(uuid4())
+  new_scheme_data = sub(UUID_REGEX, uuid_gen, new_scheme_data)
+
   with open(new_scheme_path, "wb") as f:
     f.write(new_scheme_data.encode("utf-8"))
 
