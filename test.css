@@ -110,49 +110,49 @@
 
 
 .HSL {
-  background-color: hsl(  0, 100%, 50%);    /* red */
-  background-color: hsl( 30, 100%, 50%);    /* orange */
-  background-color: hsl( 60, 100%, 50%);    /* yellow */
-  background-color: hsl( 90, 100%, 50%);    /* green */
-  background-color: hsl(120, 100%, 50%);    /* green */
-  background-color: hsl(150, 100%, 50%);    /* green */
-  background-color: hsl(180, 100%, 50%);    /* blue */
-  background-color: hsl(210, 100%, 50%);    /* blue */
-  background-color: hsl(240, 100%, 50%);    /* blue */
-  background-color: hsl(270, 100%, 50%);    /* purple */
-  background-color: hsl(300, 100%, 50%);    /* pink */
-  background-color: hsl(330, 100%, 50%);    /* pinkish */
-  background-color: hsl(360, 100%, 50%);    /* red */
-  background-color: hsl(120, 100%, 25%);    /* dark green */
-  background-color: hsl(120, 100%, 50%);    /* green */
-  background-color: hsl(120, 100%, 75%);    /* light green */
-  background-color: hsl(120, 100%, 50%);    /* green */
-  background-color: hsl(120,  67%, 50%);    /* green */
-  background-color: hsl(120,  33%, 50%);    /* green */
-  background-color: hsl(120,   0%, 50%);    /* gray */
-  background-color: hsl(120,  60%, 70%);    /* pastel green */
+  background-color: hsl( 0.0%, 100%,  50%);    /* red */
+  background-color: hsl( 8.3%, 100%,  50%);    /* orange */
+  background-color: hsl(16.7%, 100%,  50%);    /* yellow */
+  background-color: hsl(25.0%, 100%,  50%);    /* green */
+  background-color: hsl(33.3%, 100%,  50%);    /* green */
+  background-color: hsl(41.7%, 100%,  50%);    /* green */
+  background-color: hsl(50.0%, 100%,  50%);    /* blue */
+  background-color: hsl(58.3%, 100%,  50%);    /* blue */
+  background-color: hsl(66.7%, 100%,  50%);    /* blue */
+  background-color: hsl(75.0%, 100%,  50%);    /* purple */
+  background-color: hsl(83.3%, 100%,  50%);    /* pink */
+  background-color: hsl(91.7%, 100%,  50%);    /* pinkish */
+  background-color: hsl( 100%, 100%,  50%);    /* red */
+  background-color: hsl(  120,  255,63.75);    /* dark green */
+  background-color: hsl(  120,  255,127.5);    /* green */
+  background-color: hsl(  120,  255,191.3);    /* light green */
+  background-color: hsl(  120,  255,127.5);    /* green */
+  background-color: hsl(  120,  170,127.5);    /* green */
+  background-color: hsl(  120,   85,127.5);    /* green */
+  background-color: hsl(  120,    0,127.5);    /* gray */
+  background-color: hsl(  120,  153,178.5);    /* pastel green */
 }
 
 .HSLA {
-  background-color: hsla(  0, 100%, 50%, 0.3);    /* red */
-  background-color: hsla( 30, 100%, 50%, 0.3);    /* orange */
-  background-color: hsla( 60, 100%, 50%, 0.3);    /* yellow */
-  background-color: hsla( 90, 100%, 50%, 0.3);    /* green */
-  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
-  background-color: hsla(150, 100%, 50%, 0.3);    /* green */
-  background-color: hsla(180, 100%, 50%, 0.3);    /* blue */
-  background-color: hsla(210, 100%, 50%, 0.3);    /* blue */
-  background-color: hsla(240, 100%, 50%, 0.3);    /* blue */
-  background-color: hsla(270, 100%, 50%, 0.3);    /* purple */
-  background-color: hsla(300, 100%, 50%, 0.3);    /* pink */
-  background-color: hsla(330, 100%, 50%, 0.3);    /* pinkish */
-  background-color: hsla(360, 100%, 50%, 0.3);    /* red */
-  background-color: hsla(120, 100%, 25%, 0.3);    /* dark green */
-  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
-  background-color: hsla(120, 100%, 75%, 0.3);    /* light green */
-  background-color: hsla(120, 100%, 50%, 0.3);    /* green */
-  background-color: hsla(120,  67%, 50%, 0.3);    /* green */
-  background-color: hsla(120,  33%, 50%, 0.3);    /* green */
-  background-color: hsla(120,   0%, 50%, 0.3);    /* gray */
-  background-color: hsla(120,  60%, 70%, 0.3);    /* pastel green */
+  background-color: hsla( 0.0%, 100%,  50%, 0.3);    /* red */
+  background-color: hsla( 8.3%, 100%,  50%, 0.3);    /* orange */
+  background-color: hsla(16.7%, 100%,  50%, 0.3);    /* yellow */
+  background-color: hsla(25.0%, 100%,  50%, 0.3);    /* green */
+  background-color: hsla(33.3%, 100%,  50%, 0.3);    /* green */
+  background-color: hsla(41.7%, 100%,  50%, 0.3);    /* green */
+  background-color: hsla(50.0%, 100%,  50%, 0.3);    /* blue */
+  background-color: hsla(58.3%, 100%,  50%, 0.3);    /* blue */
+  background-color: hsla(66.7%, 100%,  50%, 0.3);    /* blue */
+  background-color: hsla(75.0%, 100%,  50%, 0.3);    /* purple */
+  background-color: hsla(83.3%, 100%,  50%, 0.3);    /* pink */
+  background-color: hsla(91.7%, 100%,  50%, 0.3);    /* pinkish */
+  background-color: hsla( 100%, 100%,  50%, 0.3);    /* red */
+  background-color: hsla(  120,  255,63.75, 0.3);    /* dark green */
+  background-color: hsla(  120,  255,127.5, 0.3);    /* green */
+  background-color: hsla(  120,  255,191.3, 0.3);    /* light green */
+  background-color: hsla(  120,  255,127.5, 0.3);    /* green */
+  background-color: hsla(  120,  170,127.5, 0.3);    /* green */
+  background-color: hsla(  120,   85,127.5, 0.3);    /* green */
+  background-color: hsla(  120,    0,127.5, 0.3);    /* gray */
+  background-color: hsla(  120,  153,178.5, 0.3);    /* pastel green */
 }
