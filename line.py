@@ -132,10 +132,11 @@ class Line:
 
     convert_path = None
     for path in paths:
-      if os.path.isfile(os.path.join(path,convert_name)) and os.access(os.path.join(path,convert_name), os.X_OK):
-        convert_path = os.path.join(path,convert_name)
+      if not path.endswith(convert_name):
+        path = os.path.join(path,convert_name)
+      if os.path.isfile(path) and os.access(path, os.X_OK):
+        convert_path = path
         break
-
 
     """Create the color icon using ImageMagick convert"""
     script = "\"%s\" -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
