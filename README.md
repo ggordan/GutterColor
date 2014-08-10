@@ -20,6 +20,23 @@ Gutter Color is a cross-platform Sublime Text plugin which displays a colored ic
 ```
 * For help with either, view [this blog post by Wes Bos](http://wesbos.com/css-gutter-color-sublime-text/)
 
+## 100% Perfect Colors
+Add the following to your SublimeText theme file:
+
+```xml
+<dict>
+  <key>name</key>
+  <string>GutterColor</string>
+  <key>scope</key>
+  <string>gutter_color</string>
+  <key>settings</key>
+  <dict>
+    <key>foreground</key>
+    <string>#ffffff</string>
+  </dict>
+</dict>
+```
+
 ## TODO
 
 * Add support for SASS/LESS variables
