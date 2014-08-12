@@ -20,6 +20,14 @@ Gutter Color is a cross-platform Sublime Text plugin which displays a colored ic
 ```
 * For help with either, view [this blog post by Wes Bos](http://wesbos.com/css-gutter-color-sublime-text/)
 
+## Fixing ImageMagick on OSX
+If you're experiencing issues with ImageMagick (installed via brew) when using GutterColor on OSX, follow these instructions to fix it.
+
+1. Uninstall IM with `brew uninstall imagemagick`
+2. Install again with a couple of options `brew install imagemagick --with-xz --with-font-config --with-little-cms --with-little-cms2`
+3. Check the location of `convert` with `type convert`
+4. Copy the location and edit the GutterColor/Settings - User `convert_path` to be the value of step 3.
+
 ## TODO
 
 * Add support for SASS/LESS variables
