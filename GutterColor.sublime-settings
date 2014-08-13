@@ -12,7 +12,15 @@
   /*
    * The syntax for which to run GutterColor.
    */
-  "supported_syntax": ["css", "scss", "sass", "less", "stylus", "css3", "xml"]
+  "supported_syntax": ["css", "scss", "sass", "less", "stylus", "css3", "xml"],
+
+  /*
+   * Whether to render images with an alpha channel.
+   * Setting false renders all colors as opaque, true composites
+   * colors onto a gray checkered background, and "light" is
+   * the same as true, but with a brighter BG texture
+   */
+   "use_transparency": true
 
   /*
    * Additional user-defined color matches.

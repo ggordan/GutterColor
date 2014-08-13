@@ -11,7 +11,7 @@ def clear_cache(force = False):
   from os import makedirs, listdir
   from sublime import cache_path
   from shutil import rmtree
-  
+
   # The icon cache path
   icon_path = join(cache_path(), "GutterColor")
 
@@ -55,4 +55,13 @@ def settings():
 
 def syntax(view):
   """Return the view syntax"""
-  return view.settings().get('syntax').split('/')[-1].split('.')[0].lower()
+  syntax = view.settings().get('syntax')
+  return syntax.split('/')[-1].split('.')[0].lower() if syntax is not None else "plain text"
+
+def current_directory(full=False):
+  """Return the name of the directory containing this plugin"""
+  from os.path import dirname, realpath, split
+  if full:
+    return dirname(realpath(__file__))
+  else:
+    return split(dirname(realpath(__file__)))[1]
