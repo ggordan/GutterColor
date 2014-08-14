@@ -63,7 +63,10 @@ class Line:
     """Returns the color in the line, if any rgba is found."""
     matches = re.search(Line.RGBA_REGEXP, self.text)
     if matches:
-      return 'rgb(' + matches.group(1) + ')'
+      if self.transparency_settings()[0]:
+        return matches.group(0)
+      else:
+        return 'rgb(' + matches.group(1) + ')'
 
   def hsl_color(self):
     """Returns the color in the line, if any hsl is found."""
@@ -75,7 +78,10 @@ class Line:
     """Returns the color in the line, if any rgba is found."""
     matches = re.search(Line.HSLA_REGEXP, self.text)
     if matches:
-      return 'hsl(' + matches.group(1) + ')'
+      if self.transparency_settings()[0]:
+        return matches.group(0)
+      else:
+        return 'hsl(' + matches.group(1) + ')'
 
   def custom_color(self):
     """Returns the color in the line, if any user-defined is found."""
@@ -112,6 +118,20 @@ class Line:
     """Remove icon from the gutter"""
     self.view.erase_regions("gutter_color_%s" % self.region.a)
 
+  def transparency_settings(self):
+    from .gutter_color import current_directory
+    # transparency settings
+    use_transparency = self.settings.get("use_transparency")
+    if use_transparency == True:
+      background_path = os.path.join(current_directory(True),"transparency_circle_mid.png")
+    elif use_transparency in ("light", "mid"):
+      background_path = os.path.join(current_directory(True),str("transparency_circle_"+use_transparency+".png"))
+      print(background_path)
+      use_transparency = True
+    else:
+      use_transparency = False
+    return (use_transparency, background_path)
+
   def create_icon(self):
     paths = [
       "/usr/bin/convert",
@@ -138,11 +158,18 @@ class Line:
         convert_path = path
         break
 
+    (use_transparency, background_path) = self.transparency_settings()
+
     """Create the color icon using ImageMagick convert"""
-    script = "\"%s\" -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
-      "-size 32x32 -alpha transparent xc:none " \
-      "-fill \"%s\" -draw \"circle 15,16 8,10\" png32:\"%s\"" % \
-      (convert_path, self.color(), self.icon_path())
+    if not use_transparency:
+      script = "\"%s\" -units PixelsPerCentimeter -type TrueColorMatte -channel RGBA " \
+        "-size 32x32 -alpha transparent xc:none " \
+        "-fill \"%s\" -draw \"circle 15,16 8,10\" png32:\"%s\"" % \
+        (convert_path, self.color(), self.icon_path())
+    else:
+      script = "\"%s\" \"%s\" -type TrueColorMatte -channel RGBA " \
+        "-fill \"%s\" -draw \"circle 15,16 8,10\" png32:\"%s\"" % \
+        (convert_path, background_path, self.color(), self.icon_path())
     if not isfile(self.icon_path()):
         pr = subprocess.Popen(script,
           shell = True,
