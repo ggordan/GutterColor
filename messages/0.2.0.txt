@@ -1,0 +1,7 @@
+This release fixes light color schemes. This is achieved by copying and then modifying your color scheme.
+
+To fix your scheme:
+
+- Open the Command Palette
+- Select the `GutterColor: Fix Current Color Scheme` command and hit return
+- GutterColor will magically fix your scheme
