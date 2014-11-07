@@ -57,3 +57,7 @@ Sublime's placeholder image is a red-and-yellow-striped box. If you are seeing t
 
 ## Thanks
 Thanks to all of the [contributors](https://github.com/ggordan/GutterColor/graphs/contributors) who continue to improve GutterColor!
+
+# License
+
+[MIT](/LICENSE).
