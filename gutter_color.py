@@ -69,7 +69,8 @@ def settings():
 def syntax(view):
     """Return the view syntax."""
     syntax = view.settings().get('syntax')
-    return syntax.split('/')[-1].split('.')[0].lower() if syntax is not None else "plain text"
+    return syntax.split('/')[-1].split('.')[0].lower() if syntax is not None \
+        else "plain text"
 
 
 def current_directory(full=False):
@@ -82,7 +83,9 @@ def current_directory(full=False):
 
 
 def fix_schemes_in_windows():
-    """Change color schemes for all current views in the supported syntax list"""
+    """
+    Change color schemes for all current views in the supported syntax list.
+    """
     from sublime import windows
     for window in windows():
         for view in window.views():
@@ -95,7 +98,7 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
     fix_flag = settings().get("fix_color_schemes", False)
     (fix_syntax, fix_global, fix_custom) = (False, False, False)
     custom_files = []
-    if fix_flag == True:
+    if fix_flag is True:
         (fix_syntax, fix_global) = (True, True)
     elif isinstance(fix_flag, list):
         for label in fix_flag:
@@ -123,12 +126,14 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
             # so exit
             return
     else:
-        new_scheme =  "Packages/" + current_directory() + "/" + current_scheme.split("/")[-1].split(".")[0] +\
-                      modified_marker + current_scheme.split(".")[-1]
+        new_scheme = "Packages/" + current_directory() + "/" +\
+            current_scheme.split("/")[-1].split(".")[0] +\
+            modified_marker + current_scheme.split(".")[-1]
 
     if fix_custom:
         for custom_filename in custom_files:
-            if fix_scheme_in_settings(custom_filename, current_scheme, new_scheme):
+            if fix_scheme_in_settings(custom_filename, current_scheme,
+                                      new_scheme):
                 return
     if fix_syntax or ignore_flags:
         syntax_filename = view.settings().get('syntax').split(
@@ -136,14 +141,18 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
         if fix_scheme_in_settings(syntax_filename, current_scheme, new_scheme):
             return
     if fix_global or ignore_flags:
-        if fix_scheme_in_settings("Preferences.sublime-settings", current_scheme, new_scheme):
+        if fix_scheme_in_settings("Preferences.sublime-settings",
+                                  current_scheme, new_scheme):
             return
-    print("Could not find or access the settings file where current color_scheme (" +
-          current_scheme + ") is set.")
+    print("Could not find or access the settings file where current"
+          " color_scheme (" + current_scheme + ") is set.")
 
 
-def fix_scheme_in_settings(settings_file, current_scheme, new_scheme, regenerate=False):
-    """Change the color scheme in the given Settings to a background-corrected one"""
+def fix_scheme_in_settings(settings_file, current_scheme, new_scheme,
+                           regenerate=False):
+    """
+    Change the color scheme in the given Settings to a background-corrected one
+    """
     from os.path import join, normpath, isfile
 
     settings = load_settings(settings_file)
@@ -162,12 +171,14 @@ def fix_scheme_in_settings(settings_file, current_scheme, new_scheme, regenerate
 
 
 def generate_scheme_fix(old_scheme, new_scheme_path):
-    """Appends background-correction XML to a color scheme file."""
+    """Append background-correction XML to a color scheme file."""
     from os.path import join
     from re import sub
-    UUID_REGEX = '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}'
+    UUID_REGEX = '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}' \
+        '-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}'
 
-    with open(join(packages_path(), current_directory(), 'background_fix.xml')) as f:
+    with open(join(packages_path(), current_directory(),
+                   'background_fix.xml')) as f:
         xml = f.read()
     scheme_data = load_resource(old_scheme)  # only valid for ST3 API!
 
