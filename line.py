@@ -113,6 +113,9 @@ class Line:
     def add_region(self):
         """Add the icon to the gutter."""
         self.create_icon()
+        # a lot of resource file not found error log
+        if not isfile(self.icon_path()):
+            return
         self.view.add_regions(
             "gutter_color_%s" % self.region.a,
             [self.region],
