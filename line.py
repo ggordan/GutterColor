@@ -75,7 +75,7 @@ class Line:
       return matches.group(0)
 
   def hsla_color(self):
-    """Returns the color in the line, if any rgba is found."""
+    """Returns the color in the line, if any hsla is found."""
     matches = re.search(Line.HSLA_REGEXP, self.text)
     if matches:
       if self.transparency_settings()[0]:
