@@ -73,11 +73,37 @@ def fix_schemes_in_windows():
   from sublime import windows
   for window in windows():
     for view in window.views():
+      check_bad_scheme_dir(view)
       if syntax(view) in settings().get('supported_syntax'):
         fix_scheme_in_view(view)
 
+def check_bad_scheme_dir(view):
+  current_scheme = view.settings().get("color_scheme")
+  if "Packages/GutterColor" in current_scheme or "Packages/Gutter Color" in current_scheme:
+    # we are using the incorrect (0.2.0) directory for schemes, so we clear any settings matching it
+    view.settings().set("color_scheme", "Packages/Color Scheme - Default/Monokai.tmTheme")
+
+    global_settings = load_settings("Preferences.sublime-settings")
+    if (global_settings.get("color_scheme") == current_scheme):
+      global_settings.erase("color_scheme")
+      save_settings("Preferences.sublime-settings")
+
+    syntax_filename = view.settings().get('syntax').split('/')[-1].split('.')[0] + ".sublime-settings"
+    syntax_settings = load_settings(syntax_filename)
+    if (syntax_settings.get("color_scheme") == current_scheme):
+      syntax_settings.erase("color_scheme")
+      save_settings(syntax_filename)
+
+    print("WARNING: Color schemes can no longer be saved in main Gutter Color package directory. Your scheme has been reset. See v0.2.1 changelog for details.")
+
+
 def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
   """Change color scheme in settings relevant to current view"""
+
+  current_scheme = view.settings().get("color_scheme")
+  modified_marker = ".gcfix."
+
+  # parse settings flags. TODO: move this to a settings on_change event
   fix_flag = settings().get("fix_color_schemes", False)
   (fix_syntax, fix_global, fix_custom) = (False, False, False)
   custom_files = []
@@ -97,15 +123,14 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
   else:
     return # setting is false, nonexistant, or malformed, so exit
 
-  current_scheme = view.settings().get("color_scheme")
-  modified_marker = ".gcfix."
+
   if modified_marker in current_scheme:
     if regenerate:
       new_scheme = current_scheme
     else:
       return # this view already has a fixed scheme and we aren't regenerating, so exit
   else:
-    new_scheme =  "Packages/"+current_directory()+"/"+current_scheme.split("/")[-1].split(".")[0]+\
+    new_scheme =  "Packages/User/GutterColor/"+current_scheme.split("/")[-1].split(".")[0]+\
                   modified_marker + current_scheme.split(".")[-1]
 
   if fix_custom:
@@ -124,12 +149,15 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
 
 def fix_scheme_in_settings(settings_file,current_scheme, new_scheme, regenerate=False):
   """Change the color scheme in the given Settings to a background-corrected one"""
-  from os.path import join, normpath, isfile
+  from os.path import join, normpath, isfile, isdir
+  from os import makedirs
 
   settings = load_settings(settings_file)
   settings_scheme = settings.get("color_scheme")
   if current_scheme == settings_scheme:
     new_scheme_path =  join(packages_path(), normpath(new_scheme[len("Packages/"):]))
+    if not isdir(join(packages_path(), normpath("User/GutterColor/"))):
+      makedirs(join(packages_path(), normpath("User/GutterColor/")))
     if isfile(new_scheme_path) and not regenerate:
       settings.set("color_scheme", new_scheme)
     else:

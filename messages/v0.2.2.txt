@@ -1,0 +1,3 @@
+This version changes the default directory for color scheme fixes to the user directory. This will prevent some issues where Package Control would unavoidably erase the file during updates.
+
+If you used the color fix feature before this release, your scheme has been removed and temporarily reverted to Monokai. You may need to re-set your global and syntax-specific color schemes manually; we apologize for this inconvenience.
