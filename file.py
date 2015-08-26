@@ -29,5 +29,3 @@ class File():
           self.view.erase_regions("gutter_color_%s" % region.a)
         except:
           pass
-
-
