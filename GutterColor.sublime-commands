@@ -9,15 +9,13 @@
     },
     {
         "caption": "Preferences: GutterColor Settings – Default",
-        "command": "open_file", "args":
-        {
+        "command": "open_file", "args": {
             "file": "${packages}/Gutter Color/GutterColor.sublime-settings"
         }
     },
     {
         "caption": "Preferences: GutterColor Settings – User",
-        "command": "open_file", "args":
-        {
+        "command": "open_file", "args": {
             "file": "${packages}/User/GutterColor.sublime-settings"
         }
     }
