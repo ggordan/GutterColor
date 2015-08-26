@@ -1,0 +1,1 @@
+This version introduces highlighting of web color names!

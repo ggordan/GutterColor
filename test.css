@@ -1,5 +1,23 @@
 /* From https://developer.mozilla.org/en-US/docs/Web/CSS/color_value */
 
+.COLORS {
+  background-color: black;
+  background-color: gray;
+  background-color: white;
+  background-color: maroon;
+  background-color: red;
+  background-color: purple;
+  background-color: fuchsia;
+  background-color: green;
+  background-color: lime;
+  background-color: olive;
+  background-color: yellow;
+  background-color: navy;
+  background-color: blue;
+  background-color: teal;
+  background-color: aqua;
+}
+
 .HEX3 {
   background-color: #000;    /* black */
   background-color: #888;    /* gray */

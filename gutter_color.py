@@ -121,7 +121,6 @@ def fix_scheme_in_view(view, regenerate=False, ignore_flags=False):
       return
   print("Could not find or access the settings file where current color_scheme ("+current_scheme+") is set.")
 
-
 def fix_scheme_in_settings(settings_file,current_scheme, new_scheme, regenerate=False):
   """Change the color scheme in the given Settings to a background-corrected one"""
   from os.path import join, normpath, isfile

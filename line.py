@@ -1,6 +1,7 @@
 from os.path import join, dirname, realpath, isfile
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
 import subprocess, os, glob, re, platform
+import GutterColor.webcolors as webcolors
 
 class Line:
 
@@ -20,8 +21,12 @@ class Line:
   RGBA_REGEXP = 'rgba\(' + FOUR_DIGITS + '\)'
   HSL_REGEXP = 'hsl\(' + THREE_DIGITS + '\)'
   HSLA_REGEXP = 'hsla\(' + FOUR_DIGITS + '\)'
+  WEB_COLORS_REGEX = ''
+  WEB_COLORS = []
 
   def __init__(self, view, region, file_id):
+    self.generate_webcolors()
+
     self.view     = view
     self.region   = region
     self.file_id  = file_id
@@ -34,6 +39,8 @@ class Line:
 
   def color(self):
     """Returns the color in the line, if any."""
+    if self.web_color():
+      return self.web_color()
     if self.hex_color():
       return self.hex_color()
     if self.rgb_color():
@@ -46,6 +53,17 @@ class Line:
       return self.hsla_color()
     if not self.settings.get("custom_colors") == None:
       return self.custom_color()
+
+  def generate_webcolors(self):
+    """Generates a list of web color names."""
+    self.WEB_COLORS = dict((name, color) for (name, color) in webcolors.css3_names_to_hex.items())
+    self.WEB_COLORS_REGEX = "("+ "|".join(self.WEB_COLORS.keys()) +")"
+
+  def web_color(self):
+    """Returns the color in the line, if any CSS color name is found."""
+    matches = re.search(self.WEB_COLORS_REGEX, self.text)
+    if matches:
+      return matches.group(0)
 
   def hex_color(self):
     """Returns the color in the line, if any hex is found."""
@@ -93,7 +111,6 @@ class Line:
       suffix = user_color["output_suffix"] if "output_suffix" in user_color else ""
       if matches:
         return prefix+matches.group(group_id)+suffix
-
 
   def icon_path(self):
     """Returns the absolute path to the icons"""
