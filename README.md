@@ -52,7 +52,7 @@ Sublime's placeholder image is a red-and-yellow-striped box. If you are seeing t
 * Add support for SASS/LESS variables
 * Backport to ST2
 * Handle conflicts with GitGutter/VCS Gutter
-* Support for CSS gradients and named colors
+* Support for CSS gradients
 * Better cleanup processes
 
 ## Thanks
