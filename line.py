@@ -1,7 +1,7 @@
 from os.path import join, dirname, realpath, isfile
 from sublime import HIDDEN, PERSISTENT, load_settings, cache_path
 import subprocess, os, glob, re, platform
-from GutterColor import webcolors
+from .webcolors import webcolors
 
 class Line:
 
