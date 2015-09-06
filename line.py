@@ -204,7 +204,7 @@ class Line:
   def generate_webcolors(self):
     """Generates a list of web color names."""
     self.WEB_COLORS = dict((name, color) for (name, color) in css3_names_to_hex.items())
-    self.WEB_COLORS_REGEX = "("+ "|".join(self.WEB_COLORS.keys()) +")"
+    self.WEB_COLORS_REGEX = '((?<!\$)'+ '|(?<!\$)'.join(self.WEB_COLORS.keys()) +')'
 
   def web_color(self):
     """Returns the color in the line, if any CSS color name is found."""
