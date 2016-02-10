@@ -315,10 +315,12 @@ class Line:
     paths.extend(os.environ['PATH'].split(delimiter))
 
     convert_path = None
+    WINDOWS_PATH = os.path.join("C:\\Windows\\System32\\convert.exe")
     for path in paths:
       if not path.endswith(convert_name):
         path = os.path.join(path,convert_name)
-      if os.path.isfile(path) and os.access(path, os.X_OK):
+      if os.path.isfile(path) and os.access(path, os.X_OK) \
+          and not os.path.samefile(path, WINDOWS_PATH):
         convert_path = path
         break
 
