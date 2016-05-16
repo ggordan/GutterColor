@@ -187,8 +187,6 @@ class Line:
   def color(self):
     """Returns the color in the line, if any."""
     textual_colors = self.settings.get("textual_colors")
-    if textual_colors and self.web_color():
-      return self.web_color()
     if self.hex_color():
       return self.hex_color()
     if self.rgb_color():
@@ -199,6 +197,8 @@ class Line:
       return self.hsl_color()
     if self.hsla_color():
       return self.hsla_color()
+    if textual_colors and self.web_color():
+      return self.web_color()
     if not self.settings.get("custom_colors") == None:
       return self.custom_color()
 
