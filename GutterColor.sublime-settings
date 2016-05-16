@@ -16,7 +16,7 @@
      * colors onto a gray checkered background, and "light" is
      * the same as true, but with a brighter BG texture
      */
-     "use_transparency": true,
+    "use_transparency": true,
 
     /*
      * Whether Gutter Color should automatically create a new version of the active
@@ -28,6 +28,12 @@
      * "fix_color_schemes": true is eqivalent to ["global", "syntax-specific"]
      */
     "fix_color_schemes": false,
+
+    /*
+     * Whether Gutter Color should search for and render colors for color names,
+     * e.g. for use with CSS3 color names.
+     */
+    "textual_colors": true,
 
     /*
      * Additional user-defined color matches.
