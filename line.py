@@ -211,7 +211,7 @@ class Line:
     """Returns the color in the line, if any CSS color name is found."""
     matches = re.search(self.WEB_COLORS_REGEX, self.text)
     if matches:
-      return matches.group(0)
+      return matches.group(1)
 
   def hex_color(self):
     """Returns the color in the line, if any hex is found."""
