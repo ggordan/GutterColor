@@ -205,13 +205,13 @@ class Line:
   def generate_webcolors(self):
     """Generates a list of web color names."""
     self.WEB_COLORS = dict((name, color) for (name, color) in css3_names_to_hex.items())
-    self.WEB_COLORS_REGEX = '((?<!\$)'+ '|(?<!\$)'.join(self.WEB_COLORS.keys()) +')'
+    self.WEB_COLORS_REGEX = '[\\s:](' + '|'.join(self.WEB_COLORS.keys()) + ')[\\s;]'
 
   def web_color(self):
     """Returns the color in the line, if any CSS color name is found."""
     matches = re.search(self.WEB_COLORS_REGEX, self.text)
     if matches:
-      return matches.group(0)
+      return matches.group(1)
 
   def hex_color(self):
     """Returns the color in the line, if any hex is found."""
