@@ -305,12 +305,17 @@ class Line:
       "/usr/bin"
     ]
 
+    convert_name_setting = self.settings.get("convert_name")
+
     if ( platform.system()=="Windows"):
       delimiter = ";"
       convert_name = "convert.exe"
     else:
       delimiter = ":"
       convert_name = "convert"
+
+    if convert_name_setting:
+      convert_name = convert_name_setting
 
     paths.extend(glob.glob('/usr/local/Cellar/imagemagick/*/bin'))
     paths.extend(os.environ['PATH'].split(delimiter))
