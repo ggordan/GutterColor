@@ -4,6 +4,16 @@
      * The location of the ImageMagic convert script.
      */
     "convert_path" : "/usr/bin/convert",
+    
+    /*
+     * The name of the ImageMagic convert binary file.
+     */
+    /*
+    // Default for Unix system
+    "convert_name" : "convert",
+    // Default for Windows system
+    "convert_name" : "convert.exe",
+    */
 
     /*
      * The syntax for which to run GutterColor.
