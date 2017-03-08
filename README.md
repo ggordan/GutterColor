@@ -1,5 +1,7 @@
 # Gutter Color
 
+[![Join the chat at https://gitter.im/ggordan/GutterColor](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ggordan/GutterColor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Gutter Color is a cross-platform Sublime Text plugin which displays a colored icon for all lines which contain a color.
 
 ![GutterColor](screenshot.png)
