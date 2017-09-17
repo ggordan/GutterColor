@@ -35,6 +35,11 @@ If you're experiencing issues with ImageMagick (installed via brew) when using G
 3. Check the location of `convert` with `type convert`
 4. Copy the location and edit the GutterColor/Settings - User `convert_path` to be the value of step 3.
 
+#### ImageMagick on Windows
+When installing ImageMagick on Windows, remember to select the legacy utilities to be installed so that convert will be installed:  
+
+![Screenshot of ImageMagick Windows installer.](im-win-install-screenshot.png)
+
 #### Icon Tinting and Light Color Schemes
 Sublime Text automatically tints gutter icons to match your background color settings. Unfortunately this can cause Gutter Color's samples to vary from slightly inaccurate to completely black. To counteract this effect, Gutter Color can generate a new copy of your current color scheme that sets the background to black *only for the scope of the plugin*. You will not see any visual changes other than the icons.
 
