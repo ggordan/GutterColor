@@ -287,6 +287,7 @@ class Line:
     from .gutter_color import current_directory
     # transparency settings
     use_transparency = self.settings.get("use_transparency")
+    background_path = None
     if use_transparency == True:
       background_path = os.path.join(current_directory(True),"transparency_circle_mid.png")
     elif use_transparency in ("light", "mid"):
