@@ -13,11 +13,22 @@ Gutter Color is a cross-platform Sublime Text plugin which displays a colored ic
 * Install ImageMagick
 * Set the `convert_path` in `Preferences: Package Settings > GutterColor > Settings – User` to the location of the ImageMagick `convert` script:
 
+#### OSX
+
 ```json
 {
   "convert_path" : "/usr/local/bin/convert"
 }
 ```
+
+#### Linux
+
+```json
+{
+  "convert_path" : "/usr/bin/convert"
+}
+```
+
 * For help with either, view [this blog post by Wes Bos](http://wesbos.com/css-gutter-color-sublime-text/)
 * *Additional user settings:*
     * `supported_syntax` sets the filetypes the script runs in.
